@@ -17,6 +17,7 @@
             prefix: { default: '' },
             suffix: { default: '' },
             isDisabled:{ default: false },
+            tabClass: { default: null },
         },
 
         data: () => ({

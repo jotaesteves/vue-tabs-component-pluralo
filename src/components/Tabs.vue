@@ -4,7 +4,7 @@
             <li
                 v-for="(tab, i) in tabs"
                 :key="i"
-                :class="{ 'is-active': tab.isActive, 'is-disabled': tab.isDisabled }"
+                :class="tabClass(tab)"
                 class="tabs-component-tab"
                 role="presentation"
                 v-show="tab.isVisible"
@@ -89,6 +89,19 @@
         methods: {
             findTab(hash) {
                 return this.tabs.find(tab => tab.hash === hash);
+            },
+
+            tabClass(tab) {
+                let tabClassObj = {
+                    'is-active': tab.isActive,
+                    'is-disabled': tab.isDisabled,
+                };
+
+                if (tab.tabClass) {
+                    tabClassObj[tab.tabClass] = true;
+                }
+
+                return tabClassObj;
             },
 
             selectTab(selectedTabHash, event) {
