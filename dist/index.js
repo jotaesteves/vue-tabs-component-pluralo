@@ -461,6 +461,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                         jumpToTab: false // FG - being false means that when pressing the tab, the scoll will not jump to tap content
                     };
                 }
+            },
+            tabClass: {
+                type: String,
+                required: false,
+                default: null
             }
         },
 
@@ -981,8 +986,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }],
       key: i,
       staticClass: "tabs-component-tab",
-      class: _vm.tabClass(tab),
+      class: _vm.tabClass,
       attrs: {
+        "class": _vm.tabClass,
         "role": "presentation"
       }
     }, [_c('a', {

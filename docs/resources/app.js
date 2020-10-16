@@ -12800,7 +12800,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             name: { required: true },
             prefix: { default: '' },
             suffix: { default: '' },
-            isDisabled: { default: false }
+            isDisabled: { default: false },
+            tabClass: { default: null }
         },
 
         data: function data() {
@@ -12918,6 +12919,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                         jumpToTab: false // FG - being false means that when pressing the tab, the scoll will not jump to tap content
                     };
                 }
+            },
+            tabClass: {
+                type: String,
+                required: false,
+                default: null
             }
         },
 
@@ -12974,6 +12980,18 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 return this.tabs.find(function (tab) {
                     return tab.hash === hash;
                 });
+            },
+            tabClass: function tabClass(tab) {
+                var tabClassObj = {
+                    'is-active': tab.isActive,
+                    'is-disabled': tab.isDisabled
+                };
+
+                if (tab.tabClass) {
+                    tabClassObj[tab.tabClass] = true;
+                }
+
+                return tabClassObj;
             },
             selectTab: function selectTab(selectedTabHash, event) {
                 // See if we should store the hash in the url fragment.
@@ -13426,10 +13444,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }],
       key: i,
       staticClass: "tabs-component-tab",
-      class: {
-        'is-active': tab.isActive, 'is-disabled': tab.isDisabled
-      },
+      class: _vm.tabClass,
       attrs: {
+        "class": _vm.tabClass,
         "role": "presentation"
       }
     }, [_c('a', {

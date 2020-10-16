@@ -6,6 +6,7 @@
                 :key="i"
                 :class="tabClass(tab)"
                 class="tabs-component-tab"
+                :class="tabClass"
                 role="presentation"
                 v-show="tab.isVisible"
             >
@@ -41,6 +42,11 @@
                     defaultTabHash: null,
                     jumpToTab: false, // FG - being false means that when pressing the tab, the scoll will not jump to tap content
                 }),
+            },
+            tabClass: {
+                type: String,
+                required: false,
+                default: null,
             },
         },
 
